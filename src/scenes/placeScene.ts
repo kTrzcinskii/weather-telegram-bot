@@ -2,6 +2,7 @@ import { Scenes } from "telegraf";
 import { BotScenes } from "../scenes";
 import { BotContext } from "../botContext";
 import { getPlaceWeather } from "../api/getPlaceWeather";
+import { createBaseWeatherMessage } from "./helpers";
 
 export const placeScene = new Scenes.WizardScene<BotContext>(
   BotScenes.PlaceScene,
@@ -29,13 +30,7 @@ export const placeScene = new Scenes.WizardScene<BotContext>(
       return await ctx.scene.leave();
     }
 
-    const msg = `
-    <b>${ctx.scene.session.city} ${weatherData.iconEmoji}</b>
-${weatherData.currentTemperature}°C (${weatherData.temperatureMin}°C/${weatherData.temperatureMax}°C)
-Temperature feels like: ${weatherData.temperatureFeelsLike}°C
-Humidity: ${weatherData.humidity}%
-Pressure: ${weatherData.pressure}
-    `;
+    const msg = createBaseWeatherMessage(ctx.scene.session.city!, weatherData);
     await ctx.sendMessage(msg, { parse_mode: "HTML" });
 
     return await ctx.scene.leave();

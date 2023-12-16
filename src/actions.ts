@@ -30,7 +30,7 @@ export const actions: IAction[] = [
   {
     command: AvailableCommands.place_extend,
     description:
-      "You will be ask for the place and which details you want information on and I will check them!",
+      "You will be ask for the placeI will check weather conditions there!",
   },
   {
     command: AvailableCommands.alerts,

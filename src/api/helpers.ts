@@ -4,11 +4,20 @@ export interface BaseWeatherData {
   temperatureMin: number;
   temperatureMax: number;
   pressure: number;
-  humidity: number;
+  humidity: number; // %
   iconEmoji: string;
 }
 
-export interface ExtendWeatherData extends BaseWeatherData {}
+export interface ExtendWeatherData extends BaseWeatherData {
+  visbility: number; // m
+  windSpeed: number; // m/s
+  windDeg: number; // 0-359
+  cloudiness: number; // %
+  rainLastHour?: number; // rain volume for last hour in mm
+  snowLastHour?: number; // snow volume for last hour in mm
+  sunrise: number; // unix utc
+  sunset: number; // unix utc
+}
 
 export const getBaseData = (d: any): BaseWeatherData => {
   const data: BaseWeatherData = {
@@ -19,6 +28,24 @@ export const getBaseData = (d: any): BaseWeatherData => {
     pressure: d.main.pressure,
     humidity: d.main.humidity,
     iconEmoji: transformToIcon(d.weather[0].description as string),
+  };
+  return data;
+};
+
+export const getExtendedData = (d: any): ExtendWeatherData => {
+  const base = getBaseData(d);
+  const rain = d.rain && d.rain["1h"] ? d.rain["1h"] : null;
+  const snow = d.snow && d.snow["1h"] ? d.snow["1h"] : null;
+  const data: ExtendWeatherData = {
+    ...base,
+    visbility: d.visibility,
+    windDeg: d.wind.deg,
+    windSpeed: d.wind.speed,
+    cloudiness: d.clouds.all,
+    rainLastHour: rain,
+    snowLastHour: snow,
+    sunrise: d.sys.sunrise,
+    sunset: d.sys.sunset,
   };
   return data;
 };

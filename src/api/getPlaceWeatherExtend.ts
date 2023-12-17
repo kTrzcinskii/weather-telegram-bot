@@ -14,7 +14,7 @@ export const getPlaceWeatherExtend = async (
   } catch (error) {
     console.error(error);
     // @ts-expect-error
-    if (error.response.data.cod) {
+    if (error && error.response && error.data && error.response.data.cod) {
       // @ts-expect-error
       return Number(error.response.data.cod);
     }

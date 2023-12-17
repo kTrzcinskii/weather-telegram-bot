@@ -29,10 +29,10 @@ ${createBaseWeatherMessage(city, {
 Sunrise: ${new Date(weatherData.sunrise * 1000).toLocaleTimeString()}
 Sunset: ${new Date(weatherData.sunset * 1000).toLocaleTimeString()}
 
-Visibility: ${weatherData.visbility}m
+Visibility: ${weatherData.visbility} m
 Cloudiness: ${weatherData.cloudiness}%
 
-Wind speed: ${weatherData.windSpeed}
+Wind speed: ${weatherData.windSpeed} m/s
 Wind direction: ${weatherData.windDeg}°
 ${
   weatherData.rainLastHour

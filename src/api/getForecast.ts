@@ -6,7 +6,7 @@ import {
   getBaseData,
 } from "./helpers";
 
-export const getForecaset = async (
+export const getForecast = async (
   city: string
 ): Promise<BaseForecastData[] | number> => {
   try {

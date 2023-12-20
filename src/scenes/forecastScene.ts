@@ -1,7 +1,7 @@
 import { Scenes } from "telegraf";
 import { BotContext } from "../botContext";
 import { BotScenes } from "../scenes";
-import { getForecaset } from "../api/getForecast";
+import { getForecast } from "../api/getForecast";
 import { createForecastMessage } from "./helpers";
 
 export const forecastScene = new Scenes.WizardScene<BotContext>(
@@ -18,7 +18,7 @@ export const forecastScene = new Scenes.WizardScene<BotContext>(
       `Checking forecast for ${ctx.scene.session.city}. Please give me a second...`
     );
 
-    const forecastData = await getForecaset(ctx.scene.session.city ?? "");
+    const forecastData = await getForecast(ctx.scene.session.city ?? "");
     if (typeof forecastData === "number") {
       if (forecastData === 404) {
         await ctx.sendMessage(

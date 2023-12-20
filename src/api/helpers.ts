@@ -98,3 +98,7 @@ export const filtrOnePerDay = (data: any[]): any[] => {
 
   return filtered;
 };
+
+export interface ExtendForecastData extends ExtendWeatherData {
+  date: number; // unix utc
+}

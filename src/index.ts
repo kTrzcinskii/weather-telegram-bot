@@ -6,12 +6,14 @@ import {
   forecastHandler,
   placeExtendHandler,
   placeHandler,
+  forecastExtendHandler,
 } from "./handlers";
 import { AvailableCommands } from "./actions";
 import { placeScene } from "./scenes/placeScene";
 import { BotContext } from "./botContext";
 import { placeExtendScene } from "./scenes/placeExtendScene";
 import { forecastScene } from "./scenes/forecastScene";
+import { forecastExtendScene } from "./scenes/forecastExtendScene";
 
 dotenv.config();
 
@@ -21,6 +23,7 @@ const stage = new Scenes.Stage<BotContext>([
   placeScene,
   placeExtendScene,
   forecastScene,
+  forecastExtendScene,
 ]);
 
 bot.use(session());
@@ -31,6 +34,9 @@ bot.help((ctx) => helpHandler(ctx));
 bot.command(AvailableCommands.place, (ctx) => placeHandler(ctx));
 bot.command(AvailableCommands.place_extend, (ctx) => placeExtendHandler(ctx));
 bot.command(AvailableCommands.forecast, (ctx) => forecastHandler(ctx));
+bot.command(AvailableCommands.forecast_extend, (ctx) =>
+  forecastExtendHandler(ctx)
+);
 
 bot.on("message", (ctx) => {
   ctx.reply("I don't understand. Please check /help to find what I can do!");

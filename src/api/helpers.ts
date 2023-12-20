@@ -78,3 +78,23 @@ export interface BaseForecastData extends BaseWeatherData {
 
 export const forecastDataApiLink = (city: string): string =>
   `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=metric`;
+
+export const filtrOnePerDay = (data: any[]): any[] => {
+  const alreadyTaken: number[] = [];
+  const dayInSeconds = 24 * 60 * 60;
+
+  const filtered = data.filter((r: any) => {
+    if (alreadyTaken.length === 0) {
+      alreadyTaken.push(r.dt);
+      return true;
+    }
+    const last = alreadyTaken[alreadyTaken.length - 1];
+    if (r.dt - last >= dayInSeconds) {
+      alreadyTaken.push(r.dt);
+      return true;
+    }
+    return false;
+  });
+
+  return filtered;
+};

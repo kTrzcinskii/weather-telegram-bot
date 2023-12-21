@@ -2,6 +2,7 @@ import { Scenes } from "telegraf";
 import { BotContext } from "../botContext";
 import { BotScenes } from "../scenes";
 import { getForecastExtend } from "../api/getForecastExtend";
+import { createForecastExtendMessage } from "./helpers";
 
 export const forecastExtendScene = new Scenes.WizardScene<BotContext>(
   BotScenes.ForecastExtendScene,
@@ -31,7 +32,10 @@ export const forecastExtendScene = new Scenes.WizardScene<BotContext>(
       return await ctx.scene.leave();
     }
 
-    const msg = "TODO";
+    const msg = createForecastExtendMessage(
+      ctx.scene.session.city!,
+      forecastExtendData
+    );
     await ctx.sendMessage(msg, { parse_mode: "HTML" });
 
     return await ctx.scene.leave();

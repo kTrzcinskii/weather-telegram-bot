@@ -1,6 +1,7 @@
 import {
   BaseForecastData,
   BaseWeatherData,
+  ExtendForecastData,
   ExtendWeatherData,
 } from "../api/helpers";
 
@@ -62,6 +63,34 @@ Temperature: ${data.currentTemperature}°C
 Temperature feels like: ${data.temperatureFeelsLike}°C
 Humidity: ${data.humidity}%
 Pressure: ${data.pressure}
+
+`
+  )
+  .join("")}
+`;
+
+export const createForecastExtendMessage = (
+  city: string,
+  forecastExtendData: ExtendForecastData[]
+) => `
+<b>${city} Forecast Extend for next 5 days:</b>
+${forecastExtendData
+  .map(
+    (data) => `
+<b>${new Date(data.date * 1000).toLocaleDateString()} ${data.iconEmoji}:</b>
+Temperature: ${data.currentTemperature}°C
+Temperature feels like: ${data.temperatureFeelsLike}°C
+Humidity: ${data.humidity}%
+Pressure: ${data.pressure}
+
+Sunrise: ${new Date(data.sunrise * 1000).toLocaleTimeString()}
+Sunset: ${new Date(data.sunset * 1000).toLocaleTimeString()}
+
+Visibility: ${data.visbility} m
+Cloudiness: ${data.cloudiness}%
+
+Wind speed: ${data.windSpeed} m/s
+Wind direction: ${data.windDeg}°
 
 `
   )

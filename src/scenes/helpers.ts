@@ -83,9 +83,6 @@ Temperature feels like: ${data.temperatureFeelsLike}°C
 Humidity: ${data.humidity}%
 Pressure: ${data.pressure}
 
-Sunrise: ${new Date(data.sunrise * 1000).toLocaleTimeString()}
-Sunset: ${new Date(data.sunset * 1000).toLocaleTimeString()}
-
 Visibility: ${data.visbility} m
 Cloudiness: ${data.cloudiness}%
 

@@ -1,8 +1,8 @@
 import { Scenes } from "telegraf";
 import { BotContext } from "../botContext";
-import { BotScenes } from "../scenes";
+import { BotScenes } from "../botScenes";
 
-export const AirPollutionScene = new Scenes.WizardScene<BotContext>(
+export const airPollutionScene = new Scenes.WizardScene<BotContext>(
   BotScenes.AirPollutionScene,
   async (ctx) => {
     await ctx.sendMessage("Please enter city:");

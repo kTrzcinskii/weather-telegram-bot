@@ -1,6 +1,6 @@
 import { Scenes } from "telegraf";
 import { BotContext } from "../botContext";
-import { BotScenes } from "../scenes";
+import { BotScenes } from "../botScenes";
 import { createExtendWeatherMessage } from "./helpers";
 import { getPlaceWeatherExtend } from "../api/getPlaceWeatherExtend";
 

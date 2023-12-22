@@ -10,12 +10,14 @@ import {
   airPollutionHandler,
 } from "./handlers";
 import { AvailableCommands } from "./actions";
-import { placeScene } from "./scenes/placeScene";
 import { BotContext } from "./botContext";
-import { placeExtendScene } from "./scenes/placeExtendScene";
-import { forecastScene } from "./scenes/forecastScene";
-import { forecastExtendScene } from "./scenes/forecastExtendScene";
-import { AirPollutionScene } from "./scenes/airPollutionScene";
+import {
+  airPollutionScene,
+  forecastExtendScene,
+  forecastScene,
+  placeExtendScene,
+  placeScene,
+} from "./scenes";
 
 dotenv.config();
 
@@ -26,7 +28,7 @@ const stage = new Scenes.Stage<BotContext>([
   placeExtendScene,
   forecastScene,
   forecastExtendScene,
-  AirPollutionScene,
+  airPollutionScene,
 ]);
 
 bot.use(session());

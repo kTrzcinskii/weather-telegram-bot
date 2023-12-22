@@ -1,6 +1,6 @@
 import { Scenes } from "telegraf";
 import { BotContext } from "../botContext";
-import { BotScenes } from "../scenes";
+import { BotScenes } from "../botScenes";
 import { getForecast } from "../api/getForecast";
 import { createForecastMessage } from "./helpers";
 

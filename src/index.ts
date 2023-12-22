@@ -7,6 +7,7 @@ import {
   placeExtendHandler,
   placeHandler,
   forecastExtendHandler,
+  airPollutionHandler,
 } from "./handlers";
 import { AvailableCommands } from "./actions";
 import { placeScene } from "./scenes/placeScene";
@@ -14,6 +15,7 @@ import { BotContext } from "./botContext";
 import { placeExtendScene } from "./scenes/placeExtendScene";
 import { forecastScene } from "./scenes/forecastScene";
 import { forecastExtendScene } from "./scenes/forecastExtendScene";
+import { AirPollutionScene } from "./scenes/airPollutionScene";
 
 dotenv.config();
 
@@ -24,6 +26,7 @@ const stage = new Scenes.Stage<BotContext>([
   placeExtendScene,
   forecastScene,
   forecastExtendScene,
+  AirPollutionScene,
 ]);
 
 bot.use(session());
@@ -37,6 +40,7 @@ bot.command(AvailableCommands.forecast, (ctx) => forecastHandler(ctx));
 bot.command(AvailableCommands.forecast_extend, (ctx) =>
   forecastExtendHandler(ctx)
 );
+bot.command(AvailableCommands.air_pollution, (ctx) => airPollutionHandler(ctx));
 
 bot.on("message", (ctx) => {
   ctx.reply("I don't understand. Please check /help to find what I can do!");

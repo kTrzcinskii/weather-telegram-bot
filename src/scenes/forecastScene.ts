@@ -1,8 +1,8 @@
 import { Scenes } from "telegraf";
 import { BotContext } from "../botContext";
 import { BotScenes } from "../botScenes";
-import { getForecast } from "../api/getForecast";
 import { createForecastMessage } from "./helpers";
+import { getForecast } from "../api";
 
 export const forecastScene = new Scenes.WizardScene<BotContext>(
   BotScenes.ForecastScene,

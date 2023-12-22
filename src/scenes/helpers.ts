@@ -3,7 +3,7 @@ import {
   BaseWeatherData,
   ExtendForecastData,
   ExtendWeatherData,
-} from "../api/helpers";
+} from "../api";
 
 export const createBaseWeatherMessage = (
   city: string,

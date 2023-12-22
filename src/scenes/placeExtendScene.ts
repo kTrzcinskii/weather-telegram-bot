@@ -2,7 +2,7 @@ import { Scenes } from "telegraf";
 import { BotContext } from "../botContext";
 import { BotScenes } from "../botScenes";
 import { createExtendWeatherMessage } from "./helpers";
-import { getPlaceWeatherExtend } from "../api/getPlaceWeatherExtend";
+import { getPlaceWeatherExtend } from "../api";
 
 export const placeExtendScene = new Scenes.WizardScene<BotContext>(
   BotScenes.PlaceExtendScene,

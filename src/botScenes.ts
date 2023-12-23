@@ -1,6 +1,6 @@
 export enum BotScenes {
-  PlaceScene = "PlaceScene",
-  PlaceExtendScene = "PlaceExtendScene",
+  WeatherScene = "WeatherScene",
+  WeatherExtendScene = "WeatherExtendScene",
   ForecastScene = "ForecastScene",
   ForecastExtendScene = "ForecastExtendScene",
   AirPollutionScene = "AirPollutionScene",

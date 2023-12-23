@@ -5,7 +5,7 @@ import {
   weatherDataApiLink,
 } from "./helpers";
 
-export const getPlaceWeatherExtend = async (
+export const getWeatherExtend = async (
   city: string
 ): Promise<ExtendWeatherData | number> => {
   try {

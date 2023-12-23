@@ -1,6 +1,6 @@
 export enum AvailableCommands {
-  place = "place",
-  place_extend = "place_extend",
+  weather = "weather",
+  weather_extend = "weather_extend",
   forecast = "forecast",
   forecast_extend = "forecast_extend",
   air_pollution = "air_pollution",
@@ -14,28 +14,28 @@ export interface IAction {
 
 export const actions: IAction[] = [
   {
-    command: AvailableCommands.place,
+    command: AvailableCommands.weather,
     description:
-      "You will be asked for a place and I will check basic weather conditions there!",
+      "You will be asked for a location and I will check basic weather conditions there!",
   },
   {
-    command: AvailableCommands.place_extend,
+    command: AvailableCommands.weather_extend,
     description:
-      "You will be ask for the placeI will check weather conditions there!",
+      "You will be asked for a location and I will check weather conditions there!",
   },
   {
     command: AvailableCommands.forecast,
     description:
-      "You will be asked for a place and I will check basic weather forecast for next 5 days there!",
+      "You will be asked for a location and I will check basic weather forecast for next 5 days there!",
   },
   {
     command: AvailableCommands.forecast_extend,
     description:
-      "You will be asked for a place and I will check weather forecast for next 5 days there!",
+      "You will be asked for a location and I will check weather forecast for next 5 days there!",
   },
   {
     command: AvailableCommands.air_pollution,
     description:
-      "You will be asked for a place and I will check current air pollution there!",
+      "You will be asked for a location and I will check current air pollution there!",
   },
 ];

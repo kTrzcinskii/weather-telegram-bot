@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BaseWeatherData, getBaseData, weatherDataApiLink } from "./helpers";
 
-export const getPlaceWeather = async (
+export const getWeather = async (
   city: string
 ): Promise<BaseWeatherData | number> => {
   try {

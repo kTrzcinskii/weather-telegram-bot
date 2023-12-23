@@ -4,8 +4,8 @@ import {
   startHandler,
   helpHandler,
   forecastHandler,
-  placeExtendHandler,
-  placeHandler,
+  weatherExtendHandler,
+  weatherHandler,
   forecastExtendHandler,
   airPollutionHandler,
 } from "./handlers";
@@ -15,8 +15,8 @@ import {
   airPollutionScene,
   forecastExtendScene,
   forecastScene,
-  placeExtendScene,
-  placeScene,
+  weatherExtendScene,
+  weatherScene,
 } from "./scenes";
 
 dotenv.config();
@@ -24,8 +24,8 @@ dotenv.config();
 const bot = new Telegraf<BotContext>(process.env.BOT_TOKEN);
 
 const stage = new Scenes.Stage<BotContext>([
-  placeScene,
-  placeExtendScene,
+  weatherScene,
+  weatherExtendScene,
   forecastScene,
   forecastExtendScene,
   airPollutionScene,
@@ -36,8 +36,10 @@ bot.use(stage.middleware());
 bot.start((ctx) => startHandler(ctx));
 bot.help((ctx) => helpHandler(ctx));
 
-bot.command(AvailableCommands.place, (ctx) => placeHandler(ctx));
-bot.command(AvailableCommands.place_extend, (ctx) => placeExtendHandler(ctx));
+bot.command(AvailableCommands.weather, (ctx) => weatherHandler(ctx));
+bot.command(AvailableCommands.weather_extend, (ctx) =>
+  weatherExtendHandler(ctx)
+);
 bot.command(AvailableCommands.forecast, (ctx) => forecastHandler(ctx));
 bot.command(AvailableCommands.forecast_extend, (ctx) =>
   forecastExtendHandler(ctx)

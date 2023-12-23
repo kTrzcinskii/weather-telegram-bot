@@ -1,11 +1,11 @@
 import { Scenes } from "telegraf";
-import { BotContext } from "../botContext";
 import { BotScenes } from "../botScenes";
-import { createExtendWeatherMessage } from "./helpers";
-import { getPlaceWeatherExtend } from "../api";
+import { BotContext } from "../botContext";
+import { getWeather } from "../api";
+import { createBaseWeatherMessage } from "./helpers";
 
-export const placeExtendScene = new Scenes.WizardScene<BotContext>(
-  BotScenes.PlaceExtendScene,
+export const weatherScene = new Scenes.WizardScene<BotContext>(
+  BotScenes.WeatherScene,
   async (ctx) => {
     await ctx.sendMessage("Please enter city:");
     ctx.wizard.next();
@@ -18,10 +18,7 @@ export const placeExtendScene = new Scenes.WizardScene<BotContext>(
       `Checking weather for ${ctx.scene.session.city}. Please give me a second...`
     );
 
-    const weatherData = await getPlaceWeatherExtend(
-      ctx.scene.session.city ?? ""
-    );
-
+    const weatherData = await getWeather(ctx.scene.session.city ?? "");
     if (typeof weatherData === "number") {
       if (weatherData === 404) {
         await ctx.sendMessage(
@@ -33,10 +30,7 @@ export const placeExtendScene = new Scenes.WizardScene<BotContext>(
       return await ctx.scene.leave();
     }
 
-    const msg = createExtendWeatherMessage(
-      ctx.scene.session.city!,
-      weatherData
-    );
+    const msg = createBaseWeatherMessage(ctx.scene.session.city!, weatherData);
     await ctx.sendMessage(msg, { parse_mode: "HTML" });
 
     return await ctx.scene.leave();

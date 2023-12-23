@@ -1,4 +1,5 @@
 import {
+  AirPollutionData,
   BaseForecastData,
   BaseWeatherData,
   ExtendForecastData,
@@ -92,4 +93,40 @@ Wind direction: ${data.windDeg}°
 `
   )
   .join("")}
+`;
+
+const airQualityIndexToString = (aqi: 1 | 2 | 3 | 4 | 5): string => {
+  switch (aqi) {
+    case 1:
+      return "good";
+    case 2:
+      return "fair";
+    case 3:
+      return "moderate";
+    case 4:
+      return "poor";
+    case 5:
+      return "very poor";
+    default:
+      return "";
+  }
+};
+
+export const createAirPollutionMessage = (
+  city: string,
+  airPollutionData: AirPollutionData
+) => `
+<b>${city} Air Pollution:</b>
+Concentration (μg/m3):
+  - CO -> ${airPollutionData.concentrationCO}
+  - NO -> ${airPollutionData.concentrationNO}
+  - NO2 -> ${airPollutionData.concentrationNO2}
+  - O3 -> ${airPollutionData.concentrationO3}
+  - SO2 -> ${airPollutionData.concentrationSO2}
+  - PM2.5 -> ${airPollutionData.concentrationPM2_5}
+  - PM10 -> ${airPollutionData.concentrationPM10}
+  - NH3 -> ${airPollutionData.concentrationNH3}
+Overall air quality index: ${
+  airPollutionData.airQualityIndex
+} (${airQualityIndexToString(airPollutionData.airQualityIndex)})
 `;

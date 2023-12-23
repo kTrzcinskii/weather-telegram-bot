@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getApiLink = (city: string) =>
-  `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid={${process.env.OPEN_WEATHER_API_KEY}`;
+  `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${process.env.OPEN_WEATHER_API_KEY}`;
 
 export interface Coordinates {
   latitude: number;
